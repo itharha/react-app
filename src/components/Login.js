@@ -49,11 +49,12 @@ const Login = () => {
 
         {error && <p className="error-message">{error}</p>}
 
-        <button type="submit">Se connecter</button>
-      </form>
+<div className='buttin-container'>
 
-      <p>Pas encore inscrit ?    
-      <Link to="/signup" className="button-link">Créer un compte</Link></p>
+  <button type="submit">Se connecter</button>
+  <Link to="/signup" className="button-link">Sign up</Link>
+    </div>
+      </form>
     </div>
   );
 };
