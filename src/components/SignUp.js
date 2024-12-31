@@ -112,7 +112,7 @@ const SignUp = () => {
 
         {error && <p className="error-message">{error}</p>}
 <div className='button-container'>
-<button type="submit">To Sign UP</button>
+<button type="submit">To Signgit commit -m UP</button>
 <Link to="/" className="button-link">Se connecter</Link>
 </div>
 
