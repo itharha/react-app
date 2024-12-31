@@ -6,6 +6,7 @@ import { useUserContext } from '../UserContext';
 
 const SignUp = () => {
   const { users, setUsers } = useUserContext();  
+    const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +17,10 @@ const SignUp = () => {
     e.preventDefault();
     setError('');
 
+    if (email === '' || password === '') {
+      setError('Veuillez remplir tous les champs.');
+      return;
+    }
    
     if (firstName === '' || lastName === '' || password === '' || confirmPassword === '') {
       setError('Veuillez remplir tous les champs.');
@@ -30,14 +35,15 @@ const SignUp = () => {
 
 
     const newUser = { 
+      email,
       firstName, 
       lastName, 
       password, 
-      email: firstName.toLowerCase() + '@example.com' 
+ 
     };
     setUsers([...users, newUser]);
 
-    
+    setEmail('');
     setFirstName('');
     setLastName('');
     setPassword('');
@@ -50,6 +56,16 @@ const SignUp = () => {
     <div className="signup-container">
       <h1>Sign Up</h1>
       <form onSubmit={handleSignUp}>
+      <div className="input-group">
+          <label>Email :</label>
+          <input
+            type="email"
+            placeholder="Entrez votre email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
         <div className="input-group">
           <label>Prénom :</label>
           <input
@@ -95,8 +111,12 @@ const SignUp = () => {
         </div>
 
         {error && <p className="error-message">{error}</p>}
+<div className='button-container'>
+<button type="submit">To Signgit commit -m UP</button>
+<Link to="/" className="button-link">Se connecter</Link>
+</div>
 
-        <button type="submit">S'inscrire</button>
+
       </form>
     </div>
   );
